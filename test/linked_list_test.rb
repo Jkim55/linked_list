@@ -33,10 +33,6 @@ class NodeTest < Minitest::Test
     assert_equal 1, @list_1.count
   end
 
-  def test_it_can_create_a_string_with_elements_it_contains
-    @list_1.append("doop")
-    assert_equal "doop", @list_1.to_string
-  end
 
   def test_it_can_append_to_list_when_head_node_exists
     @list_1.append("doop")
@@ -55,14 +51,26 @@ class NodeTest < Minitest::Test
     @list_1.append("6")
     assert_equal 6, @list_1.count
   end
+
+  def test_it_can_create_a_string_with_elements_it_contains
+    @list_1.append("doop")
+    assert_equal "doop", @list_1.to_string
+  end
+
+  def test_it_can_create_string_with_all_elements
+    @list_1.append("1")
+    @list_1.append("2")
+    @list_1.append("3")
+    @list_1.append("4")
+    @list_1.append("5")
+    @list_1.append("6")
+    assert_equal "1 2 3 4 5 6", @list_1.to_string
+  end
+
 end
 
 
 
-
-
-# > list.count
-# => 2
 
 # > list.to_string
 # => "doop deep"

@@ -35,16 +35,13 @@ attr_accessor :head
     counter
   end
 
-  # def count  #this is WRONG!!!!!!!!!!!!!!!
-  #   counter = 0
-  #  if @head != nil
-  #    counter += 1
-  #  else
-  #  end
-  #  counter
-  # end
-
   def to_string
-    @head.data
+    string = @head.data + " "
+    current_node = @head
+    until current_node.next_node == nil
+      current_node = current_node.next_node
+      string += current_node.data + " "
+    end
+    string.chop
   end
 end
