@@ -18,6 +18,7 @@ class NodeTest < Minitest::Test
   end
 
   def test_it_can_append
+    # binding.pry
     assert_equal "doop", @list_1.append("doop")
     assert_equal Node, @list_1.head.class
     assert_equal "doop", @list_1.head.beat
@@ -37,7 +38,6 @@ class NodeTest < Minitest::Test
   def test_it_can_append_to_list_when_head_node_exists
     @list_1.append("doop")
     @list_1.append("deep")
-
     assert_equal "doop", @list_1.head.beat
     assert_equal "deep", @list_1.head.next_node.beat
   end
@@ -67,6 +67,14 @@ class NodeTest < Minitest::Test
     assert_equal "doop deep bo bi peep booop", @list_1.to_string
   end
 
+  def test_it_can_prepend
+    @list_1.append("doop")
+    @list_1.append("deep")
+    @list_1.append("bo")
+    assert_equal "dop", @list_1.prepend("dop")
+    assert_equal "dop doop deep bo", @list_1.to_string
+  end
+
 end
 
 
@@ -85,8 +93,6 @@ end
 # > list.append("suu")
 # => "suu"
 
-# > list.prepend("dop")
-# => "dop"
 
 # > list.to_string
 # => "dop plop suu"

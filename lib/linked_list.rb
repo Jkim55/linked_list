@@ -17,8 +17,9 @@ attr_accessor :head
       until current_node.next_node == nil
         current_node = current_node.next_node
       end
-      current_node.next_node = Node.new(beat)
-      current_node.beat
+      new_node = Node.new(beat)
+      current_node.next_node = new_node
+      new_node.beat
     end
   end
 
@@ -44,4 +45,17 @@ attr_accessor :head
     end
     string.chop
   end
+
+  def prepend(beat)
+    if @head == nil
+      @head = Node.new(beat)
+      @head.beat
+    else
+      current_node = @head
+      @head = Node.new(beat)
+      @head.next_node = current_node
+      @head.beat
+    end
+  end
+
 end
