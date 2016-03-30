@@ -8,17 +8,17 @@ attr_accessor :head
   end
 
 
-  def append(data)
+  def append(beat)
     if @head == nil
-      @head = Node.new(data)
-      @head.data
+      @head = Node.new(beat)
+      @head.beat
     else
       current_node = @head
       until current_node.next_node == nil
         current_node = current_node.next_node
       end
-      current_node.next_node = Node.new(data)
-      current_node.data
+      current_node.next_node = Node.new(beat)
+      current_node.beat
     end
   end
 
@@ -36,11 +36,11 @@ attr_accessor :head
   end
 
   def to_string
-    string = @head.data + " "
+    string = @head.beat + " "
     current_node = @head
     until current_node.next_node == nil
       current_node = current_node.next_node
-      string += current_node.data + " "
+      string += current_node.beat + " "
     end
     string.chop
   end

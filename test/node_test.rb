@@ -13,11 +13,11 @@ class NodeTest < Minitest::Test
     assert_equal Node, @node_1.class
   end
 
-  def test_it_has_data
-    assert_equal "Bleep", @node_1.data
+  def test_it_has_a_beat
+    assert_equal "Bleep", @node_1.beat
   end
 
-  def test_it_can_have_another_data
+  def test_it_can_have_another_beat
     node_2 = Node.new("Boop")
     assert_equal Node, node_2.class
   end
@@ -25,6 +25,6 @@ class NodeTest < Minitest::Test
   def test_it_has_next_node
     assert_equal nil, @node_1.next_node
   end
-  
+
 
 end

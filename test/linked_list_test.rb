@@ -20,7 +20,7 @@ class NodeTest < Minitest::Test
   def test_it_can_append
     assert_equal "doop", @list_1.append("doop")
     assert_equal Node, @list_1.head.class
-    assert_equal "doop", @list_1.head.data
+    assert_equal "doop", @list_1.head.beat
   end
 
   def test_it_can_have_a_next_node
@@ -38,17 +38,17 @@ class NodeTest < Minitest::Test
     @list_1.append("doop")
     @list_1.append("deep")
 
-    assert_equal "doop", @list_1.head.data
-    assert_equal "deep", @list_1.head.next_node.data
+    assert_equal "doop", @list_1.head.beat
+    assert_equal "deep", @list_1.head.next_node.beat
   end
 
   def test_it_can_count_all_elements_when_more_than_one_exists
-    @list_1.append("1")
-    @list_1.append("2")
-    @list_1.append("3")
-    @list_1.append("4")
-    @list_1.append("5")
-    @list_1.append("6")
+    @list_1.append("doop")
+    @list_1.append("deep")
+    @list_1.append("bo")
+    @list_1.append("bi")
+    @list_1.append("peep")
+    @list_1.append("booop")
     assert_equal 6, @list_1.count
   end
 
@@ -58,19 +58,44 @@ class NodeTest < Minitest::Test
   end
 
   def test_it_can_create_string_with_all_elements
-    @list_1.append("1")
-    @list_1.append("2")
-    @list_1.append("3")
-    @list_1.append("4")
-    @list_1.append("5")
-    @list_1.append("6")
-    assert_equal "1 2 3 4 5 6", @list_1.to_string
+    @list_1.append("doop")
+    @list_1.append("deep")
+    @list_1.append("bo")
+    @list_1.append("bi")
+    @list_1.append("peep")
+    @list_1.append("booop")
+    assert_equal "doop deep bo bi peep booop", @list_1.to_string
   end
 
 end
 
 
+# prepend will add nodes to the beginning of the list.
+# insert will insert one or more elements at a given position in the list.
+# It takes 2 parameters, the 1st is the position at which to insert nodes,
+# the 2nd parameter is the string of beat to be inserted
 
+# > list = LinkedList.new
+# > list.append("plop")
+# => "plop"
 
 # > list.to_string
-# => "doop deep"
+# => "plop"
+
+# > list.append("suu")
+# => "suu"
+
+# > list.prepend("dop")
+# => "dop"
+
+# > list.to_string
+# => "dop plop suu"
+
+# > list.count
+# => 3
+
+# > list.insert(1, "woo")
+# => "woo"
+
+# list.to_string
+# => "dop plop woo suu"
