@@ -1,15 +1,13 @@
 require_relative "node"
 
 class LinkedList
-attr_accessor :head, #:total_beats
+attr_accessor :head
 
   def initialize
     @head = nil
-    # @total_beats = []
   end
 
   def append(beat)
-    # @total_beats << beat
     if @head == nil
       @head = Node.new(beat)
       @head.beat
