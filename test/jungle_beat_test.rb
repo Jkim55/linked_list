@@ -9,8 +9,8 @@ class JungleBeatTest < Minitest::Test
   jb = JungleBeat.new
   jb.append("deep doo ditt")
   assert_equal 3, jb.count
-  binding.pry
-  assert_equal "deep doo ditt", jb.append("deep doo ditt").join #@list.to_string
+  # binding.pry
+  assert_equal "deep doo ditt", jb.append("deep doo ditt").join(" ") #@list.to_string
  end
 
 
