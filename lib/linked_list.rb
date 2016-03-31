@@ -82,15 +82,19 @@ attr_accessor :head
   end
 
   def find(index, nodes)
-    current_node = @head
-    counter = 0
-    found_elements = ""
-    until counter == index
-      counter +=1
-      current_node = current_node.next_node
+    if index.class != Fixnum || nodes.class != Fixnum
+      return nil
+    else
+      current_node = @head
+      counter = 0
+      found_elements = ""
+      until counter == index.abs
+        counter +=1
+        current_node = current_node.next_node
+      end
     end
 
-    nodes.times do
+    (nodes.abs).times do
       found_elements += current_node.beat + " " # rjust/ljust
       current_node = current_node.next_node
     end

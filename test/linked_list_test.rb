@@ -22,37 +22,16 @@ class NodeTest < Minitest::Test
     assert_equal "doop", @list.head.beat
   end
 
-  def test_it_can_append_multiple_nodes
-  #   assert_equal "doop", @list.append("doop")
-  #   assert_equal Node, @list.head.class
-  #   assert_equal "doop", @list.head.beat
-  end
-
-  def test_head_next_node_is_nil
+  def test_the_next_node_of_head_is_nil
     @list.append("doop")
     assert_equal nil, @list.head.next_node
   end
-
-  def test_when_node_is_not_head_it_can_still_have_a_next_node
-  #   @list.append("doop")
-  #   assert_equal nil, @list.head.next_node
-  end
-
-  def test_it_can_count_the_elements_it_contains
-    @list.append("doop")
-    assert_equal 1, @list.count
-  end
-
 
   def test_it_can_append_to_list_when_head_node_exists
     @list.append("doop")
     @list.append("deep")
     assert_equal "doop", @list.head.beat
     assert_equal "deep", @list.head.next_node.beat
-  end
-
-  def test_it_wont_allow_invalid_nodes
-
   end
 
   def test_it_can_count_all_elements_when_more_than_one_exists
@@ -65,12 +44,7 @@ class NodeTest < Minitest::Test
     assert_equal 6, @list.count
   end
 
-  def test_it_can_create_a_string_with_elements_it_contains
-    @list.append("doop")
-    assert_equal "doop", @list.to_string
-  end
-
-  def test_it_can_create_string_with_all_elements
+  def test_it_can_create_string_with_all_elements_with_the_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
@@ -85,10 +59,12 @@ class NodeTest < Minitest::Test
     @list.append("deep")
     @list.append("bo")
     @list.prepend("dop")
+
     assert_equal "dop", @list.head.beat
     assert_equal "doop", @list.head.next_node.beat
     assert_equal "deep", @list.head.next_node.next_node.beat
     assert_equal "bo", @list.head.next_node.next_node.next_node.beat
+
     assert_equal "dop doop deep bo", @list.to_string
     assert_equal 4, @list.count
   end
@@ -116,7 +92,7 @@ class NodeTest < Minitest::Test
     assert_equal 5, @list.count
   end
 
-  def test_it_can_find_beats
+  def test_that_it_can_find_beats_that_are_within_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
@@ -127,13 +103,46 @@ class NodeTest < Minitest::Test
 
     assert_equal "doop", @list.find(0, 1)
     assert_equal "deep bo", @list.find(1, 2)
-    # assert_equal "deep bo", @list.find(1, -2) # prolly seperate test
-    # assert_equal "deep bo", @list.find(1, "word") # prolly seperate test
-
-    # assert_equal "deep bo", @list.find(1, 2) # prolly it does note mutilate the list
   end
 
-  def test_that_it_can_find_beats_that_are_within_list
+  def test_it_can_change_neg_inputs_to_absolute_values
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bo")
+    @list.append("bi")
+    @list.append("peep")
+    @list.append("booop")
+
+    assert_equal "deep bo", @list.find(1, -2)
+    assert_equal "bi peep", @list.find(-3, 2)
+  end
+
+  def test_it_can_only_accept_arguements_that_are_fixnums
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bo")
+    @list.append("bi")
+    @list.append("peep")
+    @list.append("booop")
+
+    assert_equal nil, @list.find(1.5, 2)
+    assert_equal nil, @list.find(1, "word")
+  end
+
+  def test_find_test_does_not_mutilate_the_link
+    # @list.append("doop")
+    # @list.append("deep")
+    # @list.append("bo")
+    # @list.append("bi")
+    # @list.append("peep")
+    # @list.append("booop")
+    # assert_equal "doop deep bo bi peep booop", @list.to_string
+    #
+    # assert_equal "doop", @list.find(0, 1)
+    # assert_equal "deep bo", @list.find(1, 2)
+  end
+
+  def test_that_it_can_check_if_beats_exists_within_the_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
