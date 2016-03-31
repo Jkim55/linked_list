@@ -36,11 +36,6 @@ attr_accessor :head
   end
 
   def to_string
-    # if @total_beats == nil
-    #   nil
-    # else
-    #   @total_beats.join(" ")
-    # end
     string = @head.beat + " "
     current_node = @head
     until current_node.next_node == nil
@@ -56,7 +51,6 @@ attr_accessor :head
   #   add_node
   # end
   def prepend(beat)
-  # @total_beats.unshift(beat)
     if @head.nil?
       @head = Node.new(beat)
     else
@@ -65,15 +59,6 @@ attr_accessor :head
       @head = head
     end
     beat
-    # if @head == nil
-    #   @head = Node.new(beat)
-    #   @head.beat
-    # else
-    #   current_node = @head
-    #   @head = Node.new(beat)
-    #   @head.next_node = current_node
-    #   @head.beat
-    # end
   end
 
   def insert(position, data)
@@ -93,7 +78,6 @@ attr_accessor :head
       previous.next_node = new_node
       new_node.next_node = current_node
     end
-    # @total_beats.insert(position,data)
     new_node.beat
   end
 
@@ -133,12 +117,6 @@ attr_accessor :head
         current_node = current_node.next_node
       end
     end
-    # set_head_node:   current_node = @head
-    # iterate_to_end
-      # until current_node.next_node == nil
-      #   current_node = current_node.next_node
-      # end
-
     popped_node = current_node.next_node.beat
     current_node.next_node = nil
     popped_node

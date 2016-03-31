@@ -1,4 +1,3 @@
-# gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative "../lib/linked_list"
@@ -7,7 +6,6 @@ require 'pry'
 class NodeTest < Minitest::Test
   def setup
     @list = LinkedList.new
-    # @total_beats = []
   end
 
   def test_it_can_create_linked_list
@@ -104,7 +102,6 @@ class NodeTest < Minitest::Test
     assert_equal "woo", @list.head.next_node.beat
     assert_equal "doop woo deep bo", @list.to_string
     assert_equal 4, @list.count
-    # assert_equal "woo" list.insert(1, "woo") (2,"woop") # insert multiple nodes here
   end
 
   def test_it_can_insert_multiple_nodes_into_a_specified_positions
@@ -117,20 +114,6 @@ class NodeTest < Minitest::Test
     assert_equal "woo", @list.head.next_node.beat
     assert_equal "doop woo whoop deep bo", @list.to_string
     assert_equal 5, @list.count
-    # assert_equal "woo" list.insert(1, "woo") (2,"woop") # insert multiple nodes here
-  end
-
-  def test_beat_of_all_nodes_are_stored_within_total_beats
-skip
-    @list.append("doop")
-    @list.append("deep")
-    @list.append("bo")
-
-    assert_equal "doop deep bo", @list.to_string
-    assert_equal 3, @list.count
-    assert_equal "bo", @list.head.next_node.next_node.beat
-    assert_equal ["doop", "deep", "bo"], @list.total_beats
-    # add more assertions to test scope of the test
   end
 
   def test_it_can_find_beats
@@ -168,6 +151,6 @@ skip
 
     assert_equal "bi", @list.pop
     assert_equal "bo", @list.pop
-    # assert_equal "doop deep", @list.to_string
+    assert_equal "doop deep", @list.to_string
   end
 end

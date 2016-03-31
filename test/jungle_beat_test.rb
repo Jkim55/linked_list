@@ -1,4 +1,3 @@
-# gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative "../lib/junglebeat"
@@ -9,7 +8,6 @@ class JungleBeatTest < Minitest::Test
     jb = JungleBeat.new
     jb.append("deep doo ditt")
     assert_equal 3, jb.count
-    # binding.pry
     assert_equal "deep doo ditt", jb.append("deep doo ditt").join(" ") #@list.to_string
     assert_equal "deep", jb.list.head.beat
     assert_equal "doo", jb.list.head.next_node.beat
@@ -25,12 +23,12 @@ class JungleBeatTest < Minitest::Test
     # skip
     jb = JungleBeat.new
 
-    jb.append("deep dop dop deep")
+    jb.append("project one success")
     jb.rate = 100
-    jb.voice = "Alice"
+    jb.voice = "Good News"
 
     assert_equal 100, jb.rate
-    assert_equal "Alice", jb.voice
+    assert_equal "Good News", jb.voice
     jb.play
 
     assert_equal 500, jb.reset_rate
