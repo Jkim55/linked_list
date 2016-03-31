@@ -1,7 +1,7 @@
 require_relative "node"
 
 class LinkedList
-attr_accessor :head
+  attr_accessor :head
 
   def initialize
     @head = nil
@@ -45,11 +45,6 @@ attr_accessor :head
     string.chop
   end
 
-  # def prepend(beat)
-  #   handle_shovel
-  #   check_for_nil
-  #   add_node
-  # end
   def prepend(beat)
     if @head.nil?
       @head = Node.new(beat)
@@ -93,28 +88,30 @@ attr_accessor :head
         current_node = current_node.next_node
       end
     end
-
     (nodes.abs).times do
-      found_elements += current_node.beat + " " # rjust/ljust
+      found_elements += current_node.beat + " "
       current_node = current_node.next_node
     end
     found_elements.chop
   end
 
   def includes?(beat)
-    current_node = @head
-    includes = false
-
-    until current_node.beat == beat || current_node.next_node == nil
-      current_node = current_node.next_node
-      includes = true if current_node.beat == beat
+    if beat.class != String
+      return nil
+    else
+      current_node = @head
+      includes = false
+      until current_node.beat == beat || current_node.next_node == nil
+        current_node = current_node.next_node
+        includes = true if current_node.beat == beat
+      end
     end
     includes
   end
 
   def pop
     if @head == nil
-      nil #edge case test if head is nil?
+      nil
     else
       current_node = @head
       until current_node.next_node.next_node == nil

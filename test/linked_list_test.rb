@@ -1,9 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative "../lib/linked_list"
-require 'pry'
 
 class NodeTest < Minitest::Test
+
   def setup
     @list = LinkedList.new
   end
@@ -27,14 +27,14 @@ class NodeTest < Minitest::Test
     assert_equal nil, @list.head.next_node
   end
 
-  def test_it_can_append_to_list_when_head_node_exists
+  def test_it_can_append_more_nodes
     @list.append("doop")
     @list.append("deep")
     assert_equal "doop", @list.head.beat
     assert_equal "deep", @list.head.next_node.beat
   end
 
-  def test_it_can_count_all_elements_when_more_than_one_exists
+  def test_it_can_count_all_elements_within_the_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
@@ -44,7 +44,7 @@ class NodeTest < Minitest::Test
     assert_equal 6, @list.count
   end
 
-  def test_it_can_create_string_with_all_elements_with_the_list
+  def test_it_can_create_string_with_all_elements_within_the_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
@@ -54,7 +54,7 @@ class NodeTest < Minitest::Test
     assert_equal "doop deep bo bi peep booop", @list.to_string
   end
 
-  def test_it_can_prepend
+  def test_it_can_insert_a_node_at_the_front_of_the_list
     @list.append("doop")
     @list.append("deep")
     @list.append("bo")
@@ -129,17 +129,17 @@ class NodeTest < Minitest::Test
     assert_equal nil, @list.find(1, "word")
   end
 
-  def test_find_test_does_not_mutilate_the_link
-    # @list.append("doop")
-    # @list.append("deep")
-    # @list.append("bo")
-    # @list.append("bi")
-    # @list.append("peep")
-    # @list.append("booop")
-    # assert_equal "doop deep bo bi peep booop", @list.to_string
-    #
-    # assert_equal "doop", @list.find(0, 1)
-    # assert_equal "deep bo", @list.find(1, 2)
+  def test_find_method_does_not_mutilate_the_link
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bo")
+    @list.append("bi")
+    @list.append("peep")
+    @list.append("booop")
+
+    assert_equal "doop", @list.find(0, 1)
+    assert_equal "deep bo", @list.find(1, 2)
+    assert_equal "doop deep bo bi peep booop", @list.to_string
   end
 
   def test_that_it_can_check_if_beats_exists_within_the_list
@@ -149,7 +149,19 @@ class NodeTest < Minitest::Test
     @list.append("bi")
 
     assert @list.includes?("deep")
-    assert_equal false, @list.includes?("dep") # make edge case test & try other invalid
+    assert_equal false, @list.includes?("dep")
+  end
+
+  def test_it_can_only_can_only_check_for_strings
+    @list.append("doop")
+    @list.append("deep")
+    @list.append("bo")
+    @list.append("bi")
+    @list.append("peep")
+    @list.append("booop")
+
+    assert_equal nil, @list.includes?(1)
+    assert_equal nil, @list.includes?(2.35)
   end
 
   def test_that_it_can_delete_last_element

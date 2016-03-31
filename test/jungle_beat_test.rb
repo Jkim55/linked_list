@@ -1,9 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative "../lib/junglebeat"
-require 'pry'
+require_relative "../lib/jungle_beat"
 
 class JungleBeatTest < Minitest::Test
+
   def test_it_can_append_beats
     jb = JungleBeat.new
     jb.append("deep doo ditt")
@@ -15,55 +15,49 @@ class JungleBeatTest < Minitest::Test
 
   def test_jungle_bests_can_play_beats
     jb = JungleBeat.new
-    jb.append("deep dop dop deep")
+    jb.append("ding, dah, oom, oom, ding, oom, oom, oom")
+
     jb.play
   end
 
-  def test_it_can_have_an_diff_voice
-    # skip
-    jb = JungleBeat.new
+  def test_it_can_make_jokes_in_different_voices_and_return_to_default_voice
+    jb_1 = JungleBeat.new
+    jb_2 = JungleBeat.new
+    jb_3 = JungleBeat.new
+    jb_4 = JungleBeat.new
+    jb_5 = JungleBeat.new
 
-    jb.append("project one success")
-    jb.rate = 100
-    jb.voice = "Good News"
+    jb_1.append("Knock-knock")
+    jb_1.rate = 200
+    jb_1.voice = "Victoria"
 
-    assert_equal 100, jb.rate
-    assert_equal "Good News", jb.voice
-    jb.play
+    jb_2.append("Whos there")
+    jb_2.rate = 180
+    jb_2.voice = "Alex"
+    jb_2.play
 
-    assert_equal 500, jb.reset_rate
-    assert_equal "Boing", jb.reset_voice
+    jb_3.append("Two")
+    jb_3.rate = 200
+    jb_3.voice = "Victoria"
+    jb_3.play
 
-    jb.play
+    jb_4.append("Two Who")
+    jb_4.rate = 180
+    jb_4.voice = "Alex"
+    jb_4.play
+
+    jb_5.append("Two whom")
+    jb_5.rate = 80
+    jb_5.voice = "Victoria"
+
+    assert_equal 80, jb_5.rate
+    assert_equal "Victoria", jb_5.voice
+    jb_5.play
+
+    jb_5.append("Hehhh heee hehehhehehhe heheh heee heeh hehe")
+    assert_equal 500, jb_5.reset_rate
+    assert_equal "Boing", jb_5.reset_voice
+    jb_5.play
 
   end
-
 end
-
-
-# -----------------Extension-------------------
-# > jb = JungleBeat.new("deep dop dop deep")
-
-# > jb.play
-# => 4 # plays the four sounds normal speed with Boing voice
-
-# > jb.rate = 100
-# => 100
-#
-# > jb.play
-# => 4 # plays the four sounds slower with Boing voice
-#
-# > jb.voice = "Alice"
-# => "Alice"
-#
-# > jb.play
-# => 4 # plays the four sounds slower with Alice voice
-#
-# > jb.reset_rate
-# => 500
-#
-# > jb.reset_voice
-# => "Boing"
-#
-# > jb.play
-# => 4 # plays the four sounds normal speed with Boing voice

@@ -1,5 +1,4 @@
 require_relative "linked_list"
-require 'pry'
 
 class JungleBeat
   attr_accessor :list, :rate, :voice
@@ -33,5 +32,4 @@ class JungleBeat
   def reset_voice
     @voice = "Boing"
   end
-
 end
