@@ -25,6 +25,4 @@ class NodeTest < Minitest::Test
   def test_it_has_next_node
     assert_equal nil, @node_1.next_node
   end
-
-
 end

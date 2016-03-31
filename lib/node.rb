@@ -1,6 +1,6 @@
 class Node
-attr_reader :beat
-attr_accessor :next_node
+  attr_reader :beat
+  attr_accessor :next_node
 
   def initialize (beat, next_node= nil)
     @beat = beat

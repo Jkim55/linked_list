@@ -8,9 +8,8 @@ attr_accessor :head, :total_beats
     @total_beats = []
   end
 
-
   def append(beat)
-  @total_beats << beat
+    @total_beats << beat
     if @head == nil
       @head = Node.new(beat)
       @head.beat
@@ -53,6 +52,11 @@ attr_accessor :head, :total_beats
     # string.chop
   end
 
+  # def prepend(beat)
+  #   handle_shovel
+  #   check_for_nil
+  #   add_node
+  # end
   def prepend(beat)
   @total_beats.unshift(beat)
     if @head.nil?
@@ -93,8 +97,54 @@ attr_accessor :head, :total_beats
     end
     @total_beats.insert(position,data)
     new_node.beat
-    # new_node.beat
   end
 
+  def find(index, nodes)
+    current_node = @head
+    counter = 0
+    found_elements = ""
+    until counter == index
+      counter +=1
+      current_node = current_node.next_node
+    end
 
+    nodes.times do
+      found_elements += current_node.beat + " " # rjust/ljust
+      current_node = current_node.next_node
+    end
+    found_elements.chop
+  end
+
+  def includes?(beat)
+    current_node = @head
+    includes = false
+
+    until current_node.beat == beat || current_node.next_node == nil
+      current_node = current_node.next_node
+      includes = true if current_node.beat == beat
+    end
+    includes
+  end
+
+  def pop
+    if @head == nil
+      nil #edge case test if head is nil?
+    else
+      current_node = @head
+      until current_node.next_node == nil
+        current_node = current_node.next_node
+      end
+    end
+    # set_head_node:   current_node = @head
+    # iterate_to_end
+      # until current_node.next_node == nil
+      #   current_node = current_node.next_node
+      # end
+
+    popped_node = current_node.beat
+    current_node = nil
+    @total_beats.pop # alternative needed pop!
+    # @total_beats[-1] = nil
+    popped_node
+  end
 end
