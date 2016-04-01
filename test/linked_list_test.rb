@@ -3,7 +3,6 @@ require 'minitest/pride'
 require_relative "../lib/linked_list"
 
 class NodeTest < Minitest::Test
-
   def setup
     @list = LinkedList.new
   end

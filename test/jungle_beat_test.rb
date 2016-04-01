@@ -30,6 +30,7 @@ class JungleBeatTest < Minitest::Test
     jb_1.append("Knock-knock")
     jb_1.rate = 200
     jb_1.voice = "Victoria"
+    jb_1.play
 
     jb_2.append("Whos there")
     jb_2.rate = 180
