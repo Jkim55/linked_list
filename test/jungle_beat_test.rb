@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative "../lib/jungle_beat"
+require "./lib/jungle_beat"
 
 class JungleBeatTest < Minitest::Test
 

@@ -1,4 +1,4 @@
-require_relative "node"
+require "./lib/node"
 
 class LinkedList
   attr_accessor :head
